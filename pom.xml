@@ -7,10 +7,11 @@
     <groupId>com.bat.algorithm</groupId>
     <artifactId>thinkinginalgorithm</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>C4433EF18969428B973E4F66FF49CF2F</module>
-    </modules>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>CD6EA4AE403848708C005A569CA4020A</module>
+    </modules>
 
     <properties>
         <java.version>1.8</java.version>

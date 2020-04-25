@@ -6,11 +6,10 @@
         <artifactId>thinkinginalgorithm</artifactId>
         <groupId>com.bat.algorithm</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>C4433EF18969428B973E4F66FF49CF2F</artifactId>
+    <artifactId>CD6EA4AE403848708C005A569CA4020A</artifactId>
 
 
 </project>

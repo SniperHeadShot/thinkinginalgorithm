@@ -43,14 +43,14 @@ public class MergeSort {
      * @param R      右边界
      * @author ZhengYu
      */
-    public static void merge(int[] arrays, int L, int M, int R) {
+    private static void merge(int[] arrays, int L, int M, int R) {
         int[] leftArray = new int[M - L];
-        for (int i = L; i < M; i++) {
-            leftArray[i - L] = arrays[i];
+        if (M - L >= 0) {
+            System.arraycopy(arrays, L, leftArray, 0, M - L);
         }
         int[] rightArray = new int[R - M + 1];
-        for (int i = M; i <= R; i++) {
-            rightArray[i - M] = arrays[i];
+        if (R + 1 - M >= 0) {
+            System.arraycopy(arrays, M, rightArray, 0, R + 1 - M);
         }
 
         int i = 0, j = 0;

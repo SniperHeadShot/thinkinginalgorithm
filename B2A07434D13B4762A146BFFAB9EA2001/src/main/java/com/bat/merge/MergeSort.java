@@ -16,16 +16,21 @@ public class MergeSort {
     }
 
     private static void mergeSort(int[] arrays, int L, int R) {
+        // 递归的结束条件: 只有一个元素时结束递归
         if (L == R) {
             return;
         }
 
+        // 将边界的元素分成两份用作归并算法
         int M = (L + R) / 2;
 
+        // 分隔左边的元素直至弹栈
         mergeSort(arrays, L, M);
 
+        // 分隔右边的元素直至弹栈
         mergeSort(arrays, M + 1, R);
 
+        // 弹栈执行的动作, 将排好序的两个数组做归并处理
         merge(arrays, L, M + 1, R);
     }
 

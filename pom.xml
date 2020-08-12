@@ -10,15 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>CD6EA4AE403848708C005A569CA4020A</module>
-        <module>EC6D174178494CEF99B6FC0E99C9ED1A</module>
-        <module>A7AF0C07AC5147518DF3425179750F3A</module>
-        <module>F9FC0950AE2A40B98653D6FC880904DF</module>
-        <module>B0C3EE956A68406DBB77DB6FA9249E09</module>
-        <module>B2A07434D13B4762A146BFFAB9EA2001</module>
-        <module>F7B8EF2A84334B61B861DEB4575B81DD</module>
-        <module>E6D097359EB949F0A2331DA5E1E9027D</module>
-        <module>E73E78F4FE3E4F1EBC964573F7F47DBB</module>
+        <module>common</module>
+        <module>chapter_01_data_structure</module>
     </modules>
 
     <properties>

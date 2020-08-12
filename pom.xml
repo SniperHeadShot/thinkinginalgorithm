@@ -12,6 +12,7 @@
     <modules>
         <module>common</module>
         <module>chapter_01_data_structure</module>
+        <module>chapter_02_algorithm_array</module>
     </modules>
 
     <properties>

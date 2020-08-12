@@ -49,7 +49,7 @@ public class InitialRandomNumberCreateUtil {
      *
      * @author ZhengYu
      */
-    public static int[] getRandomIntValue() {
-        return buildRandomLenIntArr(10);
+    public static int getRandomIntValue() {
+        return getRandomIntValue(10);
     }
 }

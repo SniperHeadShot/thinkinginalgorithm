@@ -13,10 +13,6 @@ public class InitialRandomNumberCreateUtil {
 
     private final static Random RANDOM = new Random(47);
 
-    public static int[] buildRandomLenIntArr() {
-        return buildRandomLenIntArr(10);
-    }
-
     /**
      * 生成一个随机的无序数组
      *
@@ -27,5 +23,33 @@ public class InitialRandomNumberCreateUtil {
         int[] result = new int[length];
         IntStream.range(0, length).forEach(index -> result[index] = RANDOM.nextInt(1000));
         return result;
+    }
+
+    /**
+     * {@link #buildRandomLenIntArr(int)}
+     *
+     * @author ZhengYu
+     */
+    public static int[] buildRandomLenIntArr() {
+        return buildRandomLenIntArr(10);
+    }
+
+    /**
+     * 生成一个随机数
+     *
+     * @param interval 取值区间
+     * @author ZhengYu
+     */
+    public static int getRandomIntValue(int interval) {
+        return RANDOM.nextInt(interval);
+    }
+
+    /**
+     * {@link #getRandomIntValue(int)}
+     *
+     * @author ZhengYu
+     */
+    public static int[] getRandomIntValue() {
+        return buildRandomLenIntArr(10);
     }
 }

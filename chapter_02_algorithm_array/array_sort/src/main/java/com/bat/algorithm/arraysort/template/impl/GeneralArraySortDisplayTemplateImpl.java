@@ -1,7 +1,6 @@
 package com.bat.algorithm.arraysort.template.impl;
 
 import com.bat.algorithm.arraysort.strategy.ArraySortStrategy;
-import com.bat.algorithm.arraysort.strategy.impl.BubbleArraySortStrategyImpl;
 import com.bat.algorithm.arraysort.template.ArraySortDisplayTemplate;
 import com.bat.algorithm.util.ClassReflectUtil;
 
@@ -23,24 +22,21 @@ public class GeneralArraySortDisplayTemplateImpl extends ArraySortDisplayTemplat
      */
     @Override
     protected List<ArraySortStrategy> loadArraySortStrategyList() {
-        return new ArrayList<ArraySortStrategy>(1) {{
-            add(new BubbleArraySortStrategyImpl());
-        }};
-
-//        List<Class<ArraySortStrategy>> strategyImplList = ClassReflectUtil.getInterfaceImplList(ArraySortStrategy.class);
-//        if (strategyImplList.isEmpty()) {
-//            return null;
-//        }
-//
-//        List<ArraySortStrategy> result = new ArrayList<>(strategyImplList.size());
-//        strategyImplList.forEach(strategyImplClass -> {
-//            try {
-//                result.add(strategyImplClass.newInstance());
-//            } catch (Exception e) {
-//                System.out.println(String.format("实例化策略 [%s] 失败, 原因: [%s]", strategyImplClass.getName(), e.getMessage()));
-//                e.printStackTrace();
-//            }
-//        });
-//        return result;
+        List<Class<?>> strategyImplList = ClassReflectUtil.getInterfaceImplList("com.bat.algorithm.arraysort.strategy.impl");
+        if (strategyImplList.isEmpty()) {
+            return null;
+        }
+        List<ArraySortStrategy> result = new ArrayList<>(strategyImplList.size());
+        strategyImplList.stream()
+                .filter(ArraySortStrategy.class::isAssignableFrom)
+                .forEach(strategyImplClass -> {
+                    try {
+                        result.add((ArraySortStrategy) strategyImplClass.newInstance());
+                    } catch (Exception e) {
+                        System.out.println(String.format("实例化策略 [%s] 失败, 原因: [%s]", strategyImplClass.getName(), e.getMessage()));
+                        e.printStackTrace();
+                    }
+                });
+        return result;
     }
 }

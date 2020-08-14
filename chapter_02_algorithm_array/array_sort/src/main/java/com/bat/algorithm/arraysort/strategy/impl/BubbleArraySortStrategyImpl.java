@@ -12,7 +12,15 @@ public class BubbleArraySortStrategyImpl implements ArraySortStrategy {
 
     @Override
     public void sort(int[] unSortedArr) {
-        System.out.println("TODO 冒泡排序");
+        for (int i = 0, len = unSortedArr.length; i < len - 1; i++) {
+            for (int j = 0; j < len - i - 1; j++) {
+                if (unSortedArr[j] > unSortedArr[j + 1]) {
+                    int temp = unSortedArr[j + 1];
+                    unSortedArr[j + 1] = unSortedArr[j];
+                    unSortedArr[j] = temp;
+                }
+            }
+        }
     }
 
     @Override

@@ -31,9 +31,10 @@ public abstract class ArraySortDisplayTemplate {
             System.out.println(String.format("----------------------------- %s -----------------------------", arraySortStrategy.strategyName()));
             int[] unSortedArr = buildRandomLenIntArr();
             System.out.println(String.format("排序前: [%s]", Arrays.toString(unSortedArr)));
-            long startMillis = System.currentTimeMillis();
+            long beginMillis = System.currentTimeMillis();
             arraySortStrategy.sort(unSortedArr);
-            System.out.println(String.format("排序后: [%s], 耗时: [%d]ms", Arrays.toString(unSortedArr), System.currentTimeMillis() - startMillis));
+            long endMillis = System.currentTimeMillis();
+            System.out.println(String.format("排序后: [%s], 耗时: [%d]ms", Arrays.toString(unSortedArr), endMillis - beginMillis));
         });
     }
 
@@ -50,6 +51,6 @@ public abstract class ArraySortDisplayTemplate {
      * @author ZhengYu
      */
     protected int[] buildRandomLenIntArr() {
-        return InitialRandomNumberCreateUtil.buildRandomLenIntArr();
+        return InitialRandomNumberCreateUtil.buildRandomLenIntArr(20);
     }
 }

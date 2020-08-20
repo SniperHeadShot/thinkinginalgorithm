@@ -28,13 +28,14 @@ public abstract class ArraySortDisplayTemplate {
             return;
         }
         arraySortStrategyList.forEach(arraySortStrategy -> {
-            System.out.println(String.format("----------------------------- %s -----------------------------", arraySortStrategy.strategyName()));
+            System.out.println(String.format(">>> %s", arraySortStrategy.strategyName()));
             int[] unSortedArr = buildRandomLenIntArr();
             System.out.println(String.format("排序前: [%s]", Arrays.toString(unSortedArr)));
             long beginMillis = System.currentTimeMillis();
             arraySortStrategy.sort(unSortedArr);
             long endMillis = System.currentTimeMillis();
             System.out.println(String.format("排序后: [%s], 耗时: [%d]ms", Arrays.toString(unSortedArr), endMillis - beginMillis));
+            System.out.println(String.format("排序结果检查: [%b]", veritySortResult(unSortedArr)));
         });
     }
 
@@ -52,5 +53,21 @@ public abstract class ArraySortDisplayTemplate {
      */
     protected int[] buildRandomLenIntArr() {
         return InitialRandomNumberCreateUtil.buildRandomLenIntArr(20);
+    }
+
+    /**
+     * 检查排序结果是否正确
+     *
+     * @author ZhengYu
+     */
+    private boolean veritySortResult(int[] arr) {
+        boolean result = true;
+        for (int i = 0, len = arr.length; i < len - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 }

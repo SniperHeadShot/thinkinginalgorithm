@@ -24,4 +24,18 @@ public interface ArraySortStrategy {
     default String strategyName() {
         return this.getClass().getName();
     }
+
+    /**
+     * 数组下标对应元素值互换
+     *
+     * @param arr    数组
+     * @param index1 下标1
+     * @param index2 下标2
+     * @author ZhengYu
+     */
+    default void arrayElementSwap(int[] arr, int index1, int index2) {
+        int temp = arr[index1];
+        arr[index1] = arr[index2];
+        arr[index2] = temp;
+    }
 }

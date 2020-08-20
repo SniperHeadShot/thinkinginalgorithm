@@ -26,9 +26,7 @@ public class SelectArraySortStrategyImpl implements ArraySortStrategy {
                 }
             }
             if (minIndex != i) {
-                int temp = unSortedArr[minIndex];
-                unSortedArr[minIndex] = unSortedArr[i];
-                unSortedArr[i] = temp;
+                arrayElementSwap(unSortedArr, minIndex, i);
             }
         }
     }

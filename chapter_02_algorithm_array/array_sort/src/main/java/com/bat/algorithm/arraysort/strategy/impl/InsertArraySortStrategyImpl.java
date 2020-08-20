@@ -18,12 +18,13 @@ public class InsertArraySortStrategyImpl implements ArraySortStrategy {
      */
     @Override
     public void sort(int[] unSortedArr) {
-        for (int i = 0, len = unSortedArr.length; i < len - 1; i++) {
-            for (int j = i + 1; j < len; j++) {
-                if (unSortedArr[i] > unSortedArr[j]) {
-                    int temp = unSortedArr[i];
-                    unSortedArr[i] = unSortedArr[j];
-                    unSortedArr[j] = temp;
+        for (int i = 1, len = unSortedArr.length; i < len; i++) {
+            for (int j = i; j > 0; j--) {
+                // 往前遍历直到找到小于等于自己的
+                if (unSortedArr[j] < unSortedArr[j - 1]) {
+                    arrayElementSwap(unSortedArr, j, j - 1);
+                } else {
+                    break;
                 }
             }
         }

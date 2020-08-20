@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
  **/
 public class InitialRandomNumberCreateUtil {
 
-    private final static Random RANDOM = new Random(47);
+    private final static Random RANDOM = new Random();
 
     /**
      * 生成一个随机的无序数组

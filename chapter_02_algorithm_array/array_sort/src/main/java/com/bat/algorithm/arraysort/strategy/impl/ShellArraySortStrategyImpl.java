@@ -40,7 +40,7 @@ public class ShellArraySortStrategyImpl implements ArraySortStrategy {
                     j += gap;
                 }
             }
-            gap = (int) Math.floor(gap / 3.0);
+            gap = gap / 3;
         }
     }
 

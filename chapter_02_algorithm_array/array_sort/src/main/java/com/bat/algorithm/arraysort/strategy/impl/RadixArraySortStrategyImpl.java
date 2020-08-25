@@ -2,6 +2,8 @@ package com.bat.algorithm.arraysort.strategy.impl;
 
 import com.bat.algorithm.arraysort.strategy.ArraySortStrategy;
 
+import java.util.Arrays;
+
 /**
  * 基数排序
  *
@@ -21,21 +23,20 @@ public class RadixArraySortStrategyImpl implements ArraySortStrategy {
         // 找到最大值用来确定循环次数
         int max = findMax(unSortedArr);
         for (int i = 1; max / i > 0; i *= 10) {
-            // 定义桶([arr.length][0~9])
-            int[][] bucket = new int[unSortedArr.length][10];
+            // 定义桶 [arr.length]
+            int[][] elementHolder = new int[unSortedArr.length][0];
 
             // 取余获得位数并将其放在桶内
             for (int j = 0; j < unSortedArr.length; j++) {
-                bucket[j][unSortedArr[j] / i % 10] = unSortedArr[j];
+                int pos = (unSortedArr[j]) / i % 10;
+                elementHolder[pos] = arrayAppend(elementHolder[pos], unSortedArr[j]);
             }
 
-            // 对桶里的元素进行回收, 每次回收后按位数有序
+            // 对桶里的元素从下往上进行回收
             int recycle = 0;
-            for (int k = 0; k < 10; k++) {
-                for (int j = 0; j < unSortedArr.length; j++) {
-                    if (bucket[j][k] != 0) {
-                        unSortedArr[recycle++] = bucket[j][k];
-                    }
+            for (int[] bucket : elementHolder) {
+                for (int value : bucket) {
+                    unSortedArr[recycle++] = value;
                 }
             }
         }
@@ -52,6 +53,19 @@ public class RadixArraySortStrategyImpl implements ArraySortStrategy {
     }
 
     /**
+     * 将数组扩容并填入新值
+     *
+     * @param arr   数组
+     * @param value 新值
+     * @author ZhengYu
+     */
+    private int[] arrayAppend(int[] arr, int value) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = value;
+        return arr;
+    }
+
+    /**
      * 策略名称
      *
      * @author ZhengYu
@@ -59,11 +73,5 @@ public class RadixArraySortStrategyImpl implements ArraySortStrategy {
     @Override
     public String strategyName() {
         return "基数排序";
-    }
-
-    public static void main(String[] args) {
-        System.out.println(1115 / 10);
-        System.out.println(1115 / 100);
-        System.out.println(1115 / 1000);
     }
 }

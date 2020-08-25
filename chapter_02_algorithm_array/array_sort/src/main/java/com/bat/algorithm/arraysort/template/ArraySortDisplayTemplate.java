@@ -52,7 +52,7 @@ public abstract class ArraySortDisplayTemplate {
      * @author ZhengYu
      */
     protected int[] buildRandomLenIntArr() {
-        return InitialRandomNumberCreateUtil.buildRandomLenIntArr(200000);
+        return InitialRandomNumberCreateUtil.buildRandomLenIntArr(2000);
     }
 
     /**

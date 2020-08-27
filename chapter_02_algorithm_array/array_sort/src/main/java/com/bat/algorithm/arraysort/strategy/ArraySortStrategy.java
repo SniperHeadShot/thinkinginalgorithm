@@ -1,5 +1,7 @@
 package com.bat.algorithm.arraysort.strategy;
 
+import java.util.Arrays;
+
 /**
  * 策略模式 - 数组排序策略
  *
@@ -37,5 +39,34 @@ public interface ArraySortStrategy {
         int temp = arr[index1];
         arr[index1] = arr[index2];
         arr[index2] = temp;
+    }
+
+    /**
+     * 将数组扩容并填入新值
+     *
+     * @param arr   数组
+     * @param value 新值
+     * @author ZhengYu
+     */
+    default int[] arrayAppend(int[] arr, int value) {
+        arr = Arrays.copyOf(arr, arr.length + 1);
+        arr[arr.length - 1] = value;
+        return arr;
+    }
+
+    /**
+     * 获取数组的最大值
+     *
+     * @param arr 数组
+     * @author ZhengYu
+     */
+    default int findMax(int[] arr) {
+        int result = 0;
+        for (int temp : arr) {
+            if (temp > result) {
+                result = temp;
+            }
+        }
+        return result;
     }
 }

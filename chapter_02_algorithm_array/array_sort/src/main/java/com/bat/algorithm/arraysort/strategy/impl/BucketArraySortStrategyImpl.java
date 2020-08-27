@@ -2,15 +2,13 @@ package com.bat.algorithm.arraysort.strategy.impl;
 
 import com.bat.algorithm.arraysort.strategy.ArraySortStrategy;
 
-import java.util.Arrays;
-
 /**
- * 基数排序 实现
+ * 桶排序 实现
  *
  * @author ZhengYu
- * @version 1.0 2020/8/17 10:02
+ * @version 1.0 2020/8/27 9:28
  **/
-public class RadixArraySortStrategyImpl implements ArraySortStrategy {
+public class BucketArraySortStrategyImpl implements ArraySortStrategy {
 
     /**
      * 排序
@@ -23,18 +21,18 @@ public class RadixArraySortStrategyImpl implements ArraySortStrategy {
         // 找到最大值用来确定循环次数
         int max = findMax(unSortedArr);
         for (int i = 1; max / i > 0; i *= 10) {
-            // 定义基数桶 [arr.length]
-            int[][] radixBucket = new int[10][0];
+            // 定义桶 [arr.length]
+            int[][] bucket = new int[unSortedArr.length][0];
 
             // 取余获得位数并将其放在桶内
             for (int element : unSortedArr) {
                 int pos = (element) / i % 10;
-                radixBucket[pos] = arrayAppend(radixBucket[pos], element);
+                bucket[pos] = arrayAppend(bucket[pos], element);
             }
 
             // 对桶里的元素从下往上进行回收
             int index = 0;
-            for (int[] element : radixBucket) {
+            for (int[] element : bucket) {
                 for (int value : element) {
                     unSortedArr[index++] = value;
                 }
@@ -49,6 +47,6 @@ public class RadixArraySortStrategyImpl implements ArraySortStrategy {
      */
     @Override
     public String strategyName() {
-        return "基数排序";
+        return "桶排序";
     }
 }

@@ -13,6 +13,7 @@
         <module>common</module>
         <module>chapter_01_data_structure</module>
         <module>chapter_02_algorithm_array</module>
+        <module>chapter_02_leetcode</module>
     </modules>
 
     <properties>
